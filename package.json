@@ -1,7 +1,7 @@
 {
   "name": "password-manager",
   "author": "Remco Stoeten",
-  "repository":"https://github.com/remco-stoeten/password-manager",
+  "repository": "https://github.com/remco-stoeten/password-manager",
   "url": "https://password-manager.remcostoeten.com/",
   "version": "0.1.0",
   "private": true,
@@ -15,18 +15,18 @@
     "format": "prettier --write --single-quote '**/*.{ts,tsx,mdx,json,yaml,css,scss}'"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.4"
+    "next": "15.0.0-rc.0",
+    "react": "19.0.0-rc-3563387fe3-20240621",
+    "react-dom": "19.0.0-rc-3563387fe3-20240621"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.4"
+    "typescript": "^5"
   }
 }
