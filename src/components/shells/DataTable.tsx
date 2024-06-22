@@ -18,7 +18,6 @@ type DataTableProps = {
   data: DataRow[];
 };
 
-
 function DataTable({ columns, data }: DataTableProps) {
   if (!data || data.length === 0) {
     return <p>No passwords found yet.</p>;

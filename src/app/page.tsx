@@ -10,7 +10,8 @@ export default function Page() {
       <main className="flex-1 p-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-xl font-bold">Saved Passwords</h2>
-          <AddNewDialog />         </div>
+          <AddNewDialog />{' '}
+        </div>
         <div className="bg-card rounded-lg shadow-lg overflow-hidden">
           <DataTable columns={columns} data={pageData} />
         </div>
