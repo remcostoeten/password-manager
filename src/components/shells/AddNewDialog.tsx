@@ -18,7 +18,7 @@ import {
 
 export default function AddNewDialog() {
   return (
-    <Dialog defaultOpen>
+    <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline">Create New Password</Button>
       </DialogTrigger>
@@ -55,7 +55,7 @@ export default function AddNewDialog() {
             <Label htmlFor="company" className="text-right">
               Company
             </Label>
-            <Select id="company">
+            <Select>
               <SelectTrigger className="col-span-3">
                 <SelectValue placeholder="Select company" />
               </SelectTrigger>
