@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import siteConfig from '@/core/data/site-config';
 import { Toaster } from 'sonner';
-import Header from '@/components/shells/Header';
+import Header from '@/components/Header';
 import PageWrapper from '@/components/shells/PageWrapper';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className='dark'>
       <body className={inter.className}>
         <PageWrapper>
           <Header />

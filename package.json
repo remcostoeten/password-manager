@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write --single-quote '**/*.{ts,tsx,mdx,json,yaml,css,scss}'"
+    "f": "prettier --write --single-quote '**/*.{ts,tsx,mdx,json,yaml,css,scss}'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",

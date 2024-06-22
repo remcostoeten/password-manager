@@ -1,8 +1,8 @@
 import { LockIcon } from 'lucide-react';
 import siteConfig from '@/core/data/site-config';
 import Link from 'next/link';
-import InfoDialog from '../InfoDialog';
-import { GithubIcon } from '../icons';
+import InfoDialog from './InfoDialog';
+import { GithubIcon } from './icons';
 
 export default function Header() {
   return (
