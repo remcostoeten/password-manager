@@ -4,6 +4,8 @@
 
 An application made for a coding assignment. The goal is to have a client-side password manager showcasing my workflow and coding style.
 
+As this is nothing for production, I opted to try out Next.js 15 with React 19 and its new compiler. While building and running, it does give some warnings, but it's still in beta; everything besides that seems to work fine.
+
 Deployed version can be found [here](https://password-manager-remcostoeten.com/).
 
 To run the application locally, you can follow the steps below.
@@ -19,7 +21,7 @@ When for some reason running locally gives you problems because of the --turbo f
 
 Built utilizing the following technologies:
 
-- React 19
+- React 19 (beta, new compiler)
 - TypeScript
 - NextJS 15
 - TailwindCSS

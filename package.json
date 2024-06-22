@@ -15,6 +15,7 @@
     "format": "prettier --write --single-quote '**/*.{ts,tsx,mdx,json,yaml,css,scss}'"
   },
   "dependencies": {
+    "babel-plugin-react-compiler": "0.0.0-experimental-938cd9a-20240601",
     "next": "15.0.0-rc.0",
     "react": "19.0.0-rc-3563387fe3-20240621",
     "react-dom": "19.0.0-rc-3563387fe3-20240621"
