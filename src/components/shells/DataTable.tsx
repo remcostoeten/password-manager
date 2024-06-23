@@ -1,48 +1,43 @@
-import React, { ReactNode } from 'react';
-
+import React from 'react';
 import {
   Table,
-  TableHeader,
   TableRow,
-  TableHead,
-  TableBody,
   TableCell,
-} from '@/components/ui';
-
-type DataRow = {
-  [key: string]: string | ReactNode;
-};
+  TableBody,
+  TableHeader,
+  TableHead,
+} from '@/components/ui/table';
+import { PasswordFormData } from '../../core/models/validationSchema';
 
 type DataTableProps = {
-  columns: string[];
-  data: DataRow[];
+  vaultItems: PasswordFormData[];
 };
 
-function DataTable({ columns, data }: DataTableProps) {
-  if (!data || data.length === 0) {
-    return <p>No passwords found yet.</p>;
-  }
-
+const DataTable: React.FC<DataTableProps> = ({ vaultItems }) => {
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          {columns.map((column) => (
-            <TableHead key={column}>{column}</TableHead>
-          ))}
+          <TableHead>Website</TableHead>
+          <TableHead>Username</TableHead>
+          <TableHead>Password</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((row, rowIndex) => (
-          <TableRow key={rowIndex}>
-            {Object.values(row).map((cell, cellIndex) => (
-              <TableCell key={`${rowIndex}-${cellIndex}`}>{cell}</TableCell>
-            ))}
+        {vaultItems.map((item, index) => (
+          <TableRow key={index}>
+            <TableCell>{item.website}</TableCell>
+            <TableCell>{item.username}</TableCell>
+            <TableCell>{item.password}</TableCell>
+            <TableCell>
+              <button>Delete</button>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
   );
-}
+};
 
 export default DataTable;
