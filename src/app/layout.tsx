@@ -22,6 +22,10 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         <PageWrapper>
+          <pre>
+            Todo: pair colors from api with the sitenames
+            testing
+          </pre>
           <Header />
           {children}
         </PageWrapper>

@@ -67,6 +67,6 @@ function DataTable({ vaultItems, onDelete }: DataTableProps) {
       </TableBody>
     </Table>
   );
-};
+}
 
 export default DataTable;

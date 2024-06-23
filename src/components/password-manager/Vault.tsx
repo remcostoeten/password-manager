@@ -5,10 +5,10 @@ import { useLocalStorage } from '@/core/hooks/useLocalStorage';
 import { PasswordFormData } from '@/core/models/validationSchema';
 import AddNewDialog from '@/components/shells/AddNewDialog';
 import DataTable from '@/components/shells/DataTable';
+import { toast } from 'sonner';
 
 export default function VaultManager() {
   const [isOpen, setIsOpen] = useState(false);
-  const [editItem, setEditItem] = useState<PasswordFormData | null>(null);
   const [vault, setVault] = useLocalStorage<PasswordFormData[]>(
     'vaultEntries',
     [],
@@ -23,10 +23,6 @@ export default function VaultManager() {
     setVault((prevVault) => prevVault.filter((x) => x !== item));
   };
 
-  const handleEdit = (item: PasswordFormData) => {
-    setVault((prevVault) => prevVault.map((x) => (x === item ? item : x)));
-  };
-
   const toggleDialog = () => setIsOpen(!isOpen);
 
   return (
@@ -37,7 +33,7 @@ export default function VaultManager() {
           onClose={toggleDialog}
           onSave={handleNewEntry}
         />
-      </div>{' '}
+      </div>
       <DataTable vaultItems={vault} onDelete={handleDelete} />
     </>
   );
