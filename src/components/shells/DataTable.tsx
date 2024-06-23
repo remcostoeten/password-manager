@@ -25,6 +25,10 @@ function DataTable({ vaultItems, onDelete }: DataTableProps) {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
+  if (vaultItems.length === 0) {
+    return <p className="text-center">No items in the vault</p>;
+  }
+
   return (
     <Table>
       <TableHeader>

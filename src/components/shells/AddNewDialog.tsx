@@ -33,7 +33,7 @@ const AddPasswordDialog: React.FC<AddPasswordDialogProps> = ({
     <Dialog open={isOpen}>
       <DialogTrigger asChild>
         <Button className="w-max justify-end" onClick={onClose}>
-          Open Dialog
+          Add new pasword to vault
         </Button>
       </DialogTrigger>
       <DialogContent>
