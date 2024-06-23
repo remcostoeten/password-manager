@@ -1,45 +1,69 @@
-import React, { ReactNode } from 'react';
+'use client';
 
+import React, { useState } from 'react';
 import {
   Table,
-  TableHeader,
   TableRow,
-  TableHead,
-  TableBody,
   TableCell,
-} from '@/components/ui';
-
-type DataRow = {
-  [key: string]: string | ReactNode;
-};
+  TableBody,
+  TableHeader,
+  TableHead,
+} from '@/components/ui/table';
+import { PasswordFormData } from '../../core/models/validationSchema';
+import { Button } from '../ui';
+import { EyeIcon, HideIcon, TrashIcon } from '../icons';
 
 type DataTableProps = {
-  columns: string[];
-  data: DataRow[];
+  vaultItems: PasswordFormData[];
+  onDelete: (item: PasswordFormData) => void;
 };
 
-function DataTable({ columns, data }: DataTableProps) {
-  if (!data || data.length === 0) {
-    return <p>No passwords found yet.</p>;
-  }
+function DataTable({ vaultItems, onDelete }: DataTableProps) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          {columns.map((column) => (
-            <TableHead key={column}>{column}</TableHead>
-          ))}
+          <TableHead>Website</TableHead>
+          <TableHead>Username</TableHead>
+          <TableHead>Password</TableHead>
+          <TableHead>Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {data.map((row, rowIndex) => (
-          <TableRow key={rowIndex}>
-            {Object.values(row).map((cell, cellIndex) => (
-              <TableCell key={`${rowIndex}-${cellIndex}`}>{cell}</TableCell>
-            ))}
-          </TableRow>
-        ))}
+        {vaultItems.map((item, index) => {
+          return (
+            <TableRow key={index}>
+              <TableCell>{item.website}</TableCell>
+              <TableCell>{item.username}</TableCell>
+              <TableCell className="flex items-center">
+                {isPasswordVisible ? item.password : '********'}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="ml-2"
+                  onClick={togglePasswordVisibility}
+                >
+                  {isPasswordVisible ? <HideIcon /> : <EyeIcon />}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={() => onDelete(item)}
+                >
+                  <TrashIcon />
+                </Button>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );
