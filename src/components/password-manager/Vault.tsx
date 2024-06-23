@@ -8,6 +8,7 @@ import DataTable from '@/components/shells/DataTable';
 
 export default function VaultManager() {
   const [isOpen, setIsOpen] = useState(false);
+  const [editItem, setEditItem] = useState<PasswordFormData | null>(null);
   const [vault, setVault] = useLocalStorage<PasswordFormData[]>(
     'vaultEntries',
     [],
@@ -37,7 +38,7 @@ export default function VaultManager() {
           onSave={handleNewEntry}
         />
       </div>{' '}
-      <DataTable vaultItems={vault} onDelete={handleDelete} onEdit={handleEdit} />
+      <DataTable vaultItems={vault} onDelete={handleDelete} />
     </>
   );
 }

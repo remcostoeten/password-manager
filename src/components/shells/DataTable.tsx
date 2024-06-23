@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import {
   Table,
   TableRow,
@@ -9,19 +11,20 @@ import {
 } from '@/components/ui/table';
 import { PasswordFormData } from '../../core/models/validationSchema';
 import { Button } from '../ui';
-import { DeleteIcon, EditIcon } from 'lucide-react';
+import { EyeIcon, HideIcon, TrashIcon } from '../icons';
 
 type DataTableProps = {
   vaultItems: PasswordFormData[];
   onDelete: (item: PasswordFormData) => void;
-  onEdit: (item: PasswordFormData) => void;
 };
 
-const DataTable: React.FC<DataTableProps> = ({
-  vaultItems,
-  onDelete,
-  onEdit,
-}) => {
+function DataTable({ vaultItems, onDelete }: DataTableProps) {
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   return (
     <Table>
       <TableHeader>
@@ -33,25 +36,34 @@ const DataTable: React.FC<DataTableProps> = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {vaultItems.map((item, index) => (
-          <TableRow key={index}>
-            <TableCell>{item.website}</TableCell>
-            <TableCell>{item.username}</TableCell>
-            <TableCell>{item.password}</TableCell>
-            <TableCell>
-              <Button size="icon" variant="ghost" onClick={() => onEdit(item)}>
-                <EditIcon />
-              </Button>
-              <Button
-                size="icon"
-                variant="ghost"
-                onClick={() => onDelete(item)}
-              >
-                <DeleteIcon />
-              </Button>
-            </TableCell>
-          </TableRow>
-        ))}
+        {vaultItems.map((item, index) => {
+          return (
+            <TableRow key={index}>
+              <TableCell>{item.website}</TableCell>
+              <TableCell>{item.username}</TableCell>
+              <TableCell className="flex items-center">
+                {isPasswordVisible ? item.password : '********'}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="ml-2"
+                  onClick={togglePasswordVisibility}
+                >
+                  {isPasswordVisible ? <HideIcon /> : <EyeIcon />}
+                </Button>
+              </TableCell>
+              <TableCell>
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  onClick={() => onDelete(item)}
+                >
+                  <TrashIcon />
+                </Button>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );
