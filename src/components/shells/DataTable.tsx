@@ -8,12 +8,20 @@ import {
   TableHead,
 } from '@/components/ui/table';
 import { PasswordFormData } from '../../core/models/validationSchema';
+import { Button } from '../ui';
+import { DeleteIcon, EditIcon } from 'lucide-react';
 
 type DataTableProps = {
   vaultItems: PasswordFormData[];
+  onDelete: (item: PasswordFormData) => void;
+  onEdit: (item: PasswordFormData) => void;
 };
 
-const DataTable: React.FC<DataTableProps> = ({ vaultItems }) => {
+const DataTable: React.FC<DataTableProps> = ({
+  vaultItems,
+  onDelete,
+  onEdit,
+}) => {
   return (
     <Table>
       <TableHeader>
@@ -31,7 +39,16 @@ const DataTable: React.FC<DataTableProps> = ({ vaultItems }) => {
             <TableCell>{item.username}</TableCell>
             <TableCell>{item.password}</TableCell>
             <TableCell>
-              <button>Delete</button>
+              <Button size="icon" variant="ghost" onClick={() => onEdit(item)}>
+                <EditIcon />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={() => onDelete(item)}
+              >
+                <DeleteIcon />
+              </Button>
             </TableCell>
           </TableRow>
         ))}

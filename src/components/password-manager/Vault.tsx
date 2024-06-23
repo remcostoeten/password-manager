@@ -18,6 +18,14 @@ export default function VaultManager() {
     setIsOpen(false);
   };
 
+  const handleDelete = (item: PasswordFormData) => {
+    setVault((prevVault) => prevVault.filter((x) => x !== item));
+  };
+
+  const handleEdit = (item: PasswordFormData) => {
+    setVault((prevVault) => prevVault.map((x) => (x === item ? item : x)));
+  };
+
   const toggleDialog = () => setIsOpen(!isOpen);
 
   return (
@@ -29,7 +37,7 @@ export default function VaultManager() {
           onSave={handleNewEntry}
         />
       </div>{' '}
-      <DataTable vaultItems={vault} />
+      <DataTable vaultItems={vault} onDelete={handleDelete} onEdit={handleEdit} />
     </>
   );
 }
