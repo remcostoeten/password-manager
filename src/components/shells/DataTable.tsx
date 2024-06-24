@@ -16,13 +16,19 @@ import { EyeIcon, HideIcon, TrashIcon } from '../icons';
 type DataTableProps = {
   vaultItems: PasswordFormData[];
   onDelete: (item: PasswordFormData) => void;
+  clients: { name: string; color: string }[];
 };
 
-function DataTable({ vaultItems, onDelete }: DataTableProps) {
+function DataTable({ vaultItems, onDelete, clients }: DataTableProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
+  };
+
+  const getClientColor = (clientName: string) => {
+    const client = clients.find((client) => client.name === clientName);
+    return client ? client.color : '#000';
   };
 
   if (vaultItems.length === 0) {
@@ -42,7 +48,12 @@ function DataTable({ vaultItems, onDelete }: DataTableProps) {
       <TableBody>
         {vaultItems.map((item, index) => {
           return (
-            <TableRow key={index}>
+            <TableRow
+              key={index}
+              style={{
+                borderLeft: `3px solid ${getClientColor(item.client || '')}`,
+              }}
+            >
               <TableCell>{item.website}</TableCell>
               <TableCell>{item.username}</TableCell>
               <TableCell className="flex items-center">
@@ -56,7 +67,7 @@ function DataTable({ vaultItems, onDelete }: DataTableProps) {
                   {isPasswordVisible ? <HideIcon /> : <EyeIcon />}
                 </Button>
               </TableCell>
-              <TableCell>
+              <TableCell className="min-w[">
                 <Button
                   size="icon"
                   variant="ghost"

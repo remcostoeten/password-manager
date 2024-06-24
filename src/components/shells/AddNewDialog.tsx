@@ -17,12 +17,14 @@ interface AddPasswordDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: PasswordFormData) => void;
+  clients: { name: string; color: string }[];
 }
 
 const AddPasswordDialog: React.FC<AddPasswordDialogProps> = ({
   isOpen,
   onClose,
   onSave,
+  clients,
 }) => {
   const handleNewEntry = (data: PasswordFormData) => {
     onSave(data);
@@ -33,14 +35,14 @@ const AddPasswordDialog: React.FC<AddPasswordDialogProps> = ({
     <Dialog open={isOpen}>
       <DialogTrigger asChild>
         <Button className="w-max justify-end" onClick={onClose}>
-          Add new pasword to vault
+          Add new password to vault
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Add New Password</DialogTitle>
         </DialogHeader>
-        <PasswordForm onSave={handleNewEntry} />
+        <PasswordForm onSave={handleNewEntry} clients={clients} />
         <DialogFooter>
           <Button variant="ghost" onClick={onClose}>
             Cancel
