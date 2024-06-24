@@ -33,4 +33,4 @@ Using the following libraries:
 - Shadcn for basic UI components
 - Zod for validation
 - Sonner (a clean toast API)
-- Jest for testingr
+- Jest for testing (not working currently).
