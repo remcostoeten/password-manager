@@ -22,7 +22,7 @@ const LegendBar = ({ items }: LegendBarProps) => {
   }
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center px-1.5 border-b pb-4">
       <TooltipProvider>
         {items.map((item, index) => (
           <div key={index} className="mr-5 flex items-center">

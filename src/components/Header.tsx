@@ -6,7 +6,7 @@ import { GithubIcon } from './icons';
 
 export default function Header() {
   return (
-    <header className="bg-card py-4 px-6 flex items-center justify-between">
+    <header className="bg-card py-4 flex items-center justify-between">
       <div className="flex items-center gap-2">
         <LockIcon className="w-6 h-6" />
         <h1 className="text-2xl font-bold">{siteConfig.title}</h1>
