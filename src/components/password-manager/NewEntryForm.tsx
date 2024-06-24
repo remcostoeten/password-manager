@@ -5,27 +5,40 @@ import {
   PasswordFormData,
 } from '../../core/models/validationSchema';
 import { Button, Input, Label } from '@/components/ui';
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+  SelectValue,
+} from '@/components/ui/select';
 import { toast } from 'sonner';
 
 type PasswordFormProps = {
   onSave?: (data: PasswordFormData) => void;
-  vault?: { website: string }[];
+  clients: { name: string; color: string }[];
 };
 
 type VaultEntry = {
   website: string;
   username: string;
   password: string;
+  client: string;
+  color: string;
 };
 
-export function PasswordForm({ onSave, vault = [] }: PasswordFormProps) {
+export function PasswordForm({ onSave, clients }: PasswordFormProps) {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    watch,
   } = useForm<PasswordFormData>({
     resolver: zodResolver(passwordSchema),
   });
+
+  const selectedClient = watch('client');
 
   const onSubmit = async (data: PasswordFormData) => {
     const currentVault = JSON.parse(
@@ -96,6 +109,32 @@ export function PasswordForm({ onSave, vault = [] }: PasswordFormProps) {
         />
         {errors.password && (
           <span className="text-red-500">{errors.password.message}</span>
+        )}
+      </div>
+      <div className="flex flex-col">
+        <Label htmlFor="client" className="mb-2 font-semibold">
+          Client
+        </Label>
+        <Select
+          onValueChange={(value) => {
+            const client = clients.find((client) => client.name === value);
+            setValue('client', value);
+            setValue('color', client?.color || '');
+          }}
+        >
+          <SelectTrigger>
+            <SelectValue placeholder="Select a client" />
+          </SelectTrigger>
+          <SelectContent>
+            {clients.map((client) => (
+              <SelectItem key={client.name} value={client.name}>
+                {client.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+        {errors.client && (
+          <span className="text-red-500">{errors.client.message}</span>
         )}
       </div>
       <Button
