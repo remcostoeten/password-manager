@@ -38,8 +38,6 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
     resolver: zodResolver(passwordSchema),
   });
 
-  const selectedClient = watch('client');
-
   const onSubmit = async (data: PasswordFormData) => {
     const currentVault = JSON.parse(
       localStorage.getItem('vaultEntries') || '[]',

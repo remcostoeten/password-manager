@@ -25,10 +25,12 @@ Built utilizing the following technologies:
 - TypeScript
 - NextJS 15
 - TailwindCSS
+- Server actions
+- Local storage
 
 Using the following libraries:
 
 - Shadcn for basic UI components
 - Zod for validation
 - Sonner (a clean toast API)
-- Testing?
+- Jest for testingr
