@@ -22,12 +22,13 @@ export default function VaultManager() {
   );
   const [clients, setClients] = useState<Client[]>([]);
 
-  async function initializeClients() {
-    const data = await fetchData();
-    setClients(data);
-  }
-
-  initializeClients();
+  useEffect(() => {
+    async function loadClients() {
+      const data = await fetchData();
+      setClients(data);
+    }
+    loadClients();
+  }, []);
 
   const handleNewEntry = (data: PasswordFormData) => {
     setVault((prevVault) => [...prevVault, data]);
