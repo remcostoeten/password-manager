@@ -1,18 +1,18 @@
-import { FieldErrors, useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { FieldErrors, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   passwordSchema,
   PasswordFormData,
-} from '../../core/models/validationSchema';
-import { Button, Input, Label } from '@/components/ui';
+} from "../../core/models/validationSchema";
+import { Button, Input, Label } from "@/components/ui";
 import {
   Select,
   SelectTrigger,
   SelectContent,
   SelectItem,
   SelectValue,
-} from '@/components/ui/select';
-import { toast } from 'sonner';
+} from "@/components/ui/select";
+import { toast } from "sonner";
 
 type PasswordFormProps = {
   onSave?: (data: PasswordFormData) => void;
@@ -40,7 +40,7 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
 
   const onSubmit = async (data: PasswordFormData) => {
     const currentVault = JSON.parse(
-      localStorage.getItem('vaultEntries') || '[]',
+      localStorage.getItem("vaultEntries") || "[]",
     );
 
     const existingSiteIndex = currentVault.findIndex(
@@ -48,8 +48,8 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
     );
 
     if (existingSiteIndex >= 0) {
-      console.error('A site with this name already exists.');
-      toast('A site with this name already exists.');
+      console.error("A site with this name already exists.");
+      toast("A site with this name already exists.");
       return;
     }
 
@@ -57,11 +57,11 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
       onSave(data);
     }
 
-    toast('Entry saved successfully to the vault!');
+    toast("Entry saved successfully to the vault!");
   };
 
   const onError = (errors: FieldErrors<PasswordFormData>) => {
-    console.log('Form errors:', errors);
+    console.log("Form errors:", errors);
     if (errors.password?.message) {
       toast(errors.password.message);
     }
@@ -75,7 +75,7 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
         </Label>
         <Input
           id="website"
-          {...register('website')}
+          {...register("website")}
           className="border p-2 rounded-md"
         />
         {errors.website && (
@@ -88,7 +88,7 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
         </Label>
         <Input
           id="username"
-          {...register('username')}
+          {...register("username")}
           className="border p-2 rounded-md"
         />
         {errors.username && (
@@ -102,7 +102,7 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
         <Input
           id="password"
           type="password"
-          {...register('password')}
+          {...register("password")}
           className="border p-2 rounded-md"
         />
         {errors.password && (
@@ -116,8 +116,8 @@ export function PasswordForm({ onSave, clients }: PasswordFormProps) {
         <Select
           onValueChange={(value) => {
             const client = clients.find((client) => client.name === value);
-            setValue('client', value);
-            setValue('color', client?.color || '');
+            setValue("client", value);
+            setValue("color", client?.color || "");
           }}
         >
           <SelectTrigger>

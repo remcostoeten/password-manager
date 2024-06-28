@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import siteConfig from '@/core/data/site-config';
-import { Toaster } from 'sonner';
-import Header from '@/components/Header';
-import PageWrapper from '@/components/shells/PageWrapper';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import siteConfig from "@/core/data/site-config";
+import { Toaster } from "sonner";
+import Header from "@/components/Header";
+import PageWrapper from "@/components/shells/PageWrapper";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: siteConfig.name,

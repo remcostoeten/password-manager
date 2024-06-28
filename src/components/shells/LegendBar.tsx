@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '../ui/tooltip';
+} from "../ui/tooltip";
 
 type LegendItem = {
   color: string;
@@ -32,7 +32,7 @@ const LegendBar = ({ items }: LegendBarProps) => {
                   className="w-5 h-5 rounded-full cursor-pointer"
                   style={{
                     backgroundColor: item.color,
-                    border: '1px solid #  ',
+                    border: "1px solid #  ",
                   }}
                 ></div>
               </TooltipTrigger>
@@ -43,6 +43,20 @@ const LegendBar = ({ items }: LegendBarProps) => {
             <span className="ml-2">{item.label}</span>
           </div>
         ))}
+        <Tooltip>
+          <div className="border border-1 text-xl text-center rounded-full w-8 h-8 grid place-items-center bg-zinc-200 shadow-xl">
+            <TooltipTrigger>❓</TooltipTrigger>
+            <TooltipContent>
+              <p>
+                These are "clients" fetched from an API.
+                <br /> The origin of this project is a coding assignment for a
+                job interview.
+                <br /> This Legend bar has nothing to do with the tool itself
+                and can be removed.
+              </p>
+            </TooltipContent>
+          </div>{" "}
+        </Tooltip>
       </TooltipProvider>
     </div>
   );

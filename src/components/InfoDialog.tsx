@@ -1,11 +1,11 @@
-import { InfoIcon } from './icons';
+import { InfoIcon } from "./icons";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog';
+} from "./ui/dialog";
 
 const InfoDialog = () => {
   return (

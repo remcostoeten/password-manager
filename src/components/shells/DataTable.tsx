@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Table,
   TableRow,
@@ -8,10 +8,10 @@ import {
   TableBody,
   TableHeader,
   TableHead,
-} from '@/components/ui/table';
-import { PasswordFormData } from '../../core/models/validationSchema';
-import { Button } from '../ui';
-import { EyeIcon, HideIcon, TrashIcon } from '../icons';
+} from "@/components/ui/table";
+import { PasswordFormData } from "../../core/models/validationSchema";
+import { Button } from "../ui";
+import { EyeIcon, HideIcon, TrashIcon } from "../icons";
 
 type DataTableProps = {
   vaultItems: PasswordFormData[];
@@ -28,11 +28,11 @@ function DataTable({ vaultItems, onDelete, clients }: DataTableProps) {
 
   const getClientColor = (clientName: string) => {
     const client = clients.find((client) => client.name === clientName);
-    return client ? client.color : '#000';
+    return client ? client.color : "#000";
   };
 
   if (vaultItems.length === 0) {
-    return <p className="text-center">No items in the vault</p>;
+    return <p className="py-4 text-center">No items in the vault 🕵️‍♂️</p>;
   }
 
   return (
@@ -51,13 +51,13 @@ function DataTable({ vaultItems, onDelete, clients }: DataTableProps) {
             <TableRow
               key={index}
               style={{
-                borderLeft: `3px solid ${getClientColor(item.client || '')}`,
+                borderLeft: `3px solid ${getClientColor(item.client || "")}`,
               }}
             >
               <TableCell>{item.website}</TableCell>
               <TableCell>{item.username}</TableCell>
               <TableCell className="flex items-center">
-                {isPasswordVisible ? item.password : '********'}
+                {isPasswordVisible ? item.password : "********"}
                 <Button
                   size="icon"
                   variant="ghost"

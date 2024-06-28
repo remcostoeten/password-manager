@@ -1,4 +1,4 @@
-import { JSX, SVGProps } from 'react';
+import { JSX, SVGProps } from "react";
 
 function HideIcon(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (

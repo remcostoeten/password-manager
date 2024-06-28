@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { useLocalStorage } from '@/core/hooks/useLocalStorage';
-import { PasswordFormData } from '@/core/models/validationSchema';
-import AddNewDialog from '@/components/shells/AddNewDialog';
-import DataTable from '@/components/shells/DataTable';
-import LegendBar from '@/components/shells/LegendBar';
-import { fetchData } from '@/core/server/actions';
-import { toast } from 'sonner';
+import { useState, useEffect } from "react";
+import { useLocalStorage } from "@/core/hooks/useLocalStorage";
+import { PasswordFormData } from "@/core/models/validationSchema";
+import AddNewDialog from "@/components/shells/AddNewDialog";
+import DataTable from "@/components/shells/DataTable";
+import LegendBar from "@/components/shells/LegendBar";
+import { fetchData } from "@/core/server/actions";
+import { toast } from "sonner";
 
 type Client = {
   name: string;
@@ -17,7 +17,7 @@ type Client = {
 export default function VaultManager() {
   const [isOpen, setIsOpen] = useState(false);
   const [vault, setVault] = useLocalStorage<PasswordFormData[]>(
-    'vaultEntries',
+    "vaultEntries",
     [],
   );
   const [clients, setClients] = useState<Client[]>([]);
@@ -33,12 +33,12 @@ export default function VaultManager() {
   const handleNewEntry = (data: PasswordFormData) => {
     setVault((prevVault) => [...prevVault, data]);
     setIsOpen(false);
-    toast('Entry saved successfully to the vault!');
+    toast("Entry saved successfully to the vault!");
   };
 
   const handleDelete = (item: PasswordFormData) => {
     setVault((prevVault) => prevVault.filter((x) => x !== item));
-    toast('Entry deleted successfully from the vault!');
+    toast("Entry deleted successfully from the vault!");
   };
 
   const toggleDialog = () => setIsOpen(!isOpen);

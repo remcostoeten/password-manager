@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 import {
   Dialog,
   DialogTrigger,
@@ -8,10 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-} from '@/components/ui/dialog';
-import { PasswordFormData } from '../../core/models/validationSchema';
-import { PasswordForm } from '../password-manager/NewEntryForm';
-import { Button } from '../ui';
+} from "@/components/ui/dialog";
+import { PasswordFormData } from "../../core/models/validationSchema";
+import { PasswordForm } from "../password-manager/NewEntryForm";
+import { Button } from "../ui";
 
 interface AddPasswordDialogProps {
   isOpen: boolean;

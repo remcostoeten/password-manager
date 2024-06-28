@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Button } from '@/components/ui/button';
-import { EyeIcon, FilePenIcon, TrashIcon } from 'lucide-react';
+import { ReactNode } from "react";
+import { Button } from "@/components/ui/button";
+import { EyeIcon, FilePenIcon, TrashIcon } from "lucide-react";
 
 export const pageData: {
   website: string;
@@ -9,8 +9,8 @@ export const pageData: {
   actions: ReactNode;
 }[] = [
   {
-    website: 'example.com',
-    username: 'johndoe',
+    website: "example.com",
+    username: "johndoe",
     password: (
       <>
         '********'
