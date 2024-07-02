@@ -1,5 +1,6 @@
 "use server";
 
+const date = 
 export async function fetchData() {
   const response = await fetch(
     "https://raw.githubusercontent.com/remcostoeten/password-manager/master/src/core/server/api.json",

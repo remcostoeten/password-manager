@@ -59,3 +59,6 @@ which should be this. Shells for rendering the vault manager, logic goes inside 
 ```
 
 5) The fetching in useEffect is not needed and can be done in so many better (and more performant) ways. The API data is on the server, so why not stay on the server and fetch the data there instead of making a request on every render?
+The function with 'use server' aka a server action with a fetchData is not how actions in NextJS are supposed to be used. Actions prefixed with 'use server' are always a POST request, thus should be used for mutations. Fetching works, but not preffered.
+
+6) Local storage works fine. But I could've opted for a more robust solution like a a state tool, I very much like the DX of Zustand. Or a cache tool like SWR.
