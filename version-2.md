@@ -14,7 +14,7 @@ The Tooltip from Shadcn could have just been a html dialog, idem for the modal. 
 Types can be more consistent. Types or interfaces should not be mixed up. Also, Zod could be used as a type. I like co-locating types, not having a types folder, except for huge interfaces.
 
 The shells directory are not all true shells. They should ideally only be UI components which accept props.
-
+ZSS
 <Vault /> is the only component loaded on the page, which means the entire app is client-side. This eliminates one of the reasons you (I) chose Next.
 
  Split up the app into multiple components

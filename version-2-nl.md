@@ -75,4 +75,4 @@ wat zou moeten zijn dit. Shells voor het renderen van de vault manager, logica g
 
 6- Local storage werkt prima. Maar ik had kunnen kiezen voor een robuustere oplossing zoals een state tool, ik ben erg fan van de DX van Zustand. Of een Cache tool zoals SWR. Al werkt dit prima, zou ik onderzoek naar moeten doen en Poc's draaien
 
-To be continued..... maybe
+To be continued..... maybe  

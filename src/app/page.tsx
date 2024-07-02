@@ -1,6 +1,20 @@
-import VaultManager from "@/components/password-manager/Vault";
+import { Suspense } from 'react'
+import AddNewEntryButton from './AddNewEntryButton.tsx'
+import ClientList from './ClientList'
+import VaultEntries from './VaultEntries'
 
-export default function page() {
-  // Vault manager contains little logic so everything there is a client component but I still opted to extract it away into VaultManager isntead of just dumping the logic here in page.tsx so the page can get server side rendered and the VaultManager can be client side rendered.
-  return <VaultManager />;
+export default function VaultManager() {
+  return (
+    <>
+      <div className="flex my-8 justify-end w-full">
+        <AddNewEntryButton />
+      </div>
+      <Suspense fallback={<div>Loading clients...</div>}>
+        <ClientList />
+      </Suspense>
+      <Suspense fallback={<div>Loading vault entries...</div>}>
+        <VaultEntries />
+      </Suspense>
+    </>
+  )
 }
